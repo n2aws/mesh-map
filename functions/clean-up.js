@@ -27,7 +27,7 @@ function groupByOverlap(items) {
 
     if (!found) {
       // Add a new group.
-      groups.push({ loc: loc, items: [i] });
+      groups.push({ id: i.metadata.id, loc: loc, items: [i] });
     }
   }
 
@@ -36,7 +36,7 @@ function groupByOverlap(items) {
 
 async function deduplicateGroup(group, store) {
   if (group.items.length === 1) {
-    console.log(`Group ${group.loc} only has 1 item.`);
+    console.log(`Group ${group.id} ${group.loc} only has 1 item.`);
     return;
   }
 
@@ -53,6 +53,7 @@ async function deduplicateGroup(group, store) {
   // Delete all the older items.
   await Promise.all(itemsToDelete.map(async i => {
     console.log(`Deleting ${i.name}`);
+    await store.delete(i.name);
   }));
 }
 
@@ -69,6 +70,7 @@ async function cleanRepeaters(context) {
     indexed.set(metadata.id, items);
   });
 
+  // Compute overlap groups and deduplicate.
   await Promise.all(indexed.entries().map(async ([key, val]) => {
     if (val.length === 1) {
       console.log(`${key} has no duplicates.`);

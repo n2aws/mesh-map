@@ -32,20 +32,20 @@ async function migrateSamples(context) {
 }
 
 async function migrateRepeaters(context) {
-  const store = context.env.REPEATERS;
-  const repeatersList = await store.list();
+  // const store = context.env.REPEATERS;
+  // const repeatersList = await store.list();
 
-  // Fix up key consistency
-  await Promise.all(repeatersList.keys.map(async r => {
-    const metadata = r.metadata;
-    const key = `${metadata.id}|${metadata.lat.toFixed(4)}|${metadata.lon.toFixed(4)}`;
-    if (key !== r.name) {
-      await store.put(key, "", {
-        metadata: metadata
-      });
-      await store.delete(r.name);
-    }
-  }));
+  // // Fix up key consistency
+  // await Promise.all(repeatersList.keys.map(async r => {
+  //   const metadata = r.metadata;
+  //   const key = `${metadata.id}|${metadata.lat.toFixed(4)}|${metadata.lon.toFixed(4)}`;
+  //   if (key !== r.name) {
+  //     await store.put(key, "", {
+  //       metadata: metadata
+  //     });
+  //     await store.delete(r.name);
+  //   }
+  // }));
 }
 
 export async function onRequest(context) {
