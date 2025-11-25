@@ -17,7 +17,7 @@ export async function onRequest(context) {
         hash: c.name,
         heard: c.metadata.heard ?? 0,
         lost: c.metadata.lost ?? 0,
-        lastHeard: c.metadata.time ?? 0,
+        lastHeard: c.metadata.lastHeard ?? 0,
         hitRepeaters: c.metadata.hitRepeaters ?? []
       });
     });
