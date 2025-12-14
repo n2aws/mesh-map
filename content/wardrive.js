@@ -19,7 +19,7 @@ const autoToggleBtn = $("autoToggleBtn");
 const ignoredRepeaterBtn = $("ignoredRepeaterBtn");
 
 const wardriveChannelName = "#wardrive";
-const refreshTileAge = 2; // Tiles older than this will get pinged again.
+const refreshTileAge = 1; // Tiles older than this (days) will get pinged again.
 
 // --- Global Init ---
 // Map setup
