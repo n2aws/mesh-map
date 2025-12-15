@@ -510,7 +510,7 @@ async function sendPing({ auto = false } = {}) {
 
   // Send sample to service.
   try {
-    await fetch("https://mesh-map.pages.dev/put-sample", {
+    await fetch("/put-sample", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ lat, lon }),
