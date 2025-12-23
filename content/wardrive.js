@@ -610,8 +610,9 @@ async function sendPing({ auto = false } = {}) {
     const ping = { hash: sampleId };
 
     if (sample) {
+      const repeaters = JSON.parse(sample.repeaters) ?? [];
       ping.observed = sample.observed;
-      ping.heard = sample.path.length > 0;
+      ping.heard = repeaters.length > 0;
       mergeCoverage(tileId, {
         o: ping.observed ? 1 : 0,
         h: ping.heard ? 1 : 0,
