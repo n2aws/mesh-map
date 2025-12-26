@@ -27,13 +27,27 @@
       is a crowd-sourced visualization of repeater coverage in the PNW MeshCore mesh.
     </div>
 
-    <div class="">
-      The map has a few features.
+    <div>
+      The main map has a few features:
       <ul class="pl-4 text-sm list-disc">
-        <li>Green dot - the mesh was reachable at that location (visible for 1 day).</li>
-        <li>Red dot - the mesh was not reachable at that location (visible for 1 day).</li>
-        <li>Green box - the mesh was reachable in this region.</li>
-        <li>Red box - the mesh was not reachable in this region.</li>
+        <li>Dots indicate "pings" or "samples" from wardrivers.</li>
+        <li style="list-style-type: none">
+          <ul class="pl-4 text-sm list-disc">
+            <li>Pings are visible on the map for 1 day before being grouped into a "coverage"
+              tile (a box).</li>
+            <li>Green dot - a ping was "observed" (by MQTT) at that location.</li>
+            <li>Orange dot - a repeater was heard but the ping was not observed.</li>
+            <li>Red dot - a ping was lost.</li>
+          </ul>
+        </li>
+        <li>Coverage tiles hold stats for the last 15 "groupings" of pings.</li>
+        <li style="list-style-type: none">
+          <ul class="pl-4 text-sm list-disc">
+            <li>Green box - the mesh was reachable in this region.</li>
+            <li>Orange box - the mesh was not reachable, but pings were heard in this region.</li>
+            <li>Red box - the mesh was not reachable in this region.</li>
+          </ul>
+        </li>
         <li>Dashed line - links a green dot or box to its 1st hop repeater(s).</li>
         <li>Blue dot - repeater with an advert in the past 1 day.</li>
         <li>Light gray dot - repeater with an advert in the past 5 days.</li>
@@ -50,6 +64,12 @@
     can't reach the mesh, there's a helpful web app you can run on your phone to
     automate the process. To be "heard", your message repeats must be heard by
     PugetMesh Haystack [86], WW7STR/PugetMesh Cougar [7e], or N7JMV-NEW-RP [53].
+  </div>
+  <div class="mb-2 pl-4 text-base">
+    WA7JNJ Radio made a nice
+    <a class="underline text-sky-300" href="https://www.youtube.com/watch?v=NhpzdhJeT2w" target="_blank">video
+      overview</a>
+    of the project and how to get started.
   </div>
 
   <h2 class="mb-2 text-xl text-slate-100">How you can contribute</h2>
@@ -88,6 +108,19 @@
       <li>Don't spam the mesh or the service. The mesh is a shared resource -- be judicious.</li>
       <li><b>If you're using a mobile repeater (car-peater), use the "ignore id" function to exclude it from the path.
           Otherwise coverage data will be inaccurate.</b></li>
+    </ul>
+  </div>
+
+  <h2 class="mb-2 text-xl text-slate-100">Host an instance for your region?</h2>
+  <div class="pl-4 text-base mb-2">
+    If you want to set up an instance for your region you have two good options.
+    <ul class="pl-4 text-sm list-disc">
+      <li>Host your own Cloudflare version by following the
+        <a class="underline text-sky-300" href="https://github.com/kallanreed/mesh-map/blob/main/support/setup.md"
+          target="_blank">setup instructions</a>.
+      </li>
+      <li>Use the <a class="underline text-sky-300" href="https://github.com/nullrouten0/meshcore-coverage-map"
+          target="_blank">self-hosted fork from nullrouten0</a>.</li>
     </ul>
   </div>
 

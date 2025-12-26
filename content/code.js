@@ -59,6 +59,7 @@ mapControl.onAdd = m => {
             <option value="heardPct" title="Darker is higher heard rate">Heard %</option>
             <option value="notRepeated" title="Darker is high heard to observed ratio.">Heard, Not Repeated</option>
             <option value="bySnr" title="Darker better SNR.">SNR</option>
+            <option value="byRssi" title="Darker better RSSI.">RSSI</option>
             <option value="lastObserved" title="Darker is more recently observed">Last Observed</option>
             <option value="lastHeard" title="Darker is more recently heard">Last Heard</option>
             <option value="lastUpdated" title="Darker is more recently pinged">Last Updated</option>
@@ -92,6 +93,10 @@ mapControl.onAdd = m => {
       </div>
       <div class="mesh-control-row">
         <button type="button" id="refresh-map-button">Refresh map</button>
+        <!--<label>
+          🌈
+          <input type="checkbox" id="use-colorscale" />
+        </label>-->
       </div>
       <!--<div class="mesh-control-row color-scale" id="color-scale">
         <span>12</span>
@@ -286,7 +291,21 @@ function getCoverageStyle(coverage) {
         style.color = snr > 0 ? obsColor : missColor;
         style.fillOpacity = Math.min(0.9, Math.abs(snr));
       } else {
-        style.fillOpacity = 0.1;
+        style.opacity = 0.2;
+        style.fillOpacity = 0;
+      }
+      break;
+    }
+
+    case 'byRssi': {
+      if (coverage.rssi != null) {
+        // Normalize to about [-1, 1], centered on -80
+        const rssi = 2 * sigmoid(coverage.rssi, 0.05, -80) - 1;
+        style.color = rssi > 0 ? obsColor : missColor;
+        style.fillOpacity = Math.min(0.9, Math.abs(rssi));
+      } else {
+        style.opacity = 0.2;
+        style.fillOpacity = 0;
       }
       break;
     }
