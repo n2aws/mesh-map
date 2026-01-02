@@ -9,14 +9,8 @@
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "meshmap",
-			"database_id": "ae0ebc8a-3fa5-41e8-9206-030399b89704"
-		},
-		{
-			"binding": "mesh_map",
 			"database_name": "mesh-map",
-			"database_id": "48010622-6093-40c0-80f0-4aabaf871cb7",
-			"remote": true
+			"database_id": "8c6d4949-1a78-4ffe-b731-99c3f5b1b0e7"
 		}
 	]
 }
