@@ -1,16 +1,22 @@
 {
-    "$schema": "./node_modules/wrangler/config-schema.json",
-    "name": "mesh-map",
-    "pages_build_output_dir": ".",
-    "compatibility_date": "2025-11-05",
-    "compatibility_flags": [
-        "nodejs_compat"
-    ],
-    "d1_databases": [
-        {
-            "binding": "DB",
-            "database_name": "meshmap",
-            "database_id": "ae0ebc8a-3fa5-41e8-9206-030399b89704"
-        }
-    ]
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "mesh-map",
+	"pages_build_output_dir": ".",
+	"compatibility_date": "2025-11-05",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "meshmap",
+			"database_id": "ae0ebc8a-3fa5-41e8-9206-030399b89704"
+		},
+		{
+			"binding": "mesh_map",
+			"database_name": "mesh-map",
+			"database_id": "48010622-6093-40c0-80f0-4aabaf871cb7",
+			"remote": true
+		}
+	]
 }
